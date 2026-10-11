@@ -362,7 +362,56 @@
       );
     });
 
-    document.getElementById("loginForm").addEventListener("submit", function(event) {
+    document.getElementById(<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const SUPABASE_URL = "https://iyymtbwevsdtqvtwtdre.supabase.co";
+const SUPABASE_KEY = "sb_publishable_d8qc9vjKhtzuv8dEFKr_AQ_X5ulP6tl";
+
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+document.getElementById("dataForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const network = document.getElementById("network").value;
+  const plan = document.getElementById("plan").value;
+  const phone = document.getElementById("phone").value;
+
+  alert(
+    "AMEER DATA HUB - Demo\n\n" +
+    "Network: " + network + "\n" +
+    "Data: " + plan + "\n" +
+    "Phone: " + phone + "\n\n" +
+    "Ba a tura data ba tukuna. Ana buƙatar haɗa tsarin VTU na gaske."
+  );
+});
+
+document.getElementById("loginForm").addEventListener("submit", async function(event) {
+  event.preventDefault();
+
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value;
+
+  try {
+    const { data, error } = await supabaseClient.auth.signInWithPassword({
+      email: email,
+      password: password
+    });
+
+    if (error) {
+      alert("Login bai yi nasara ba: " + error.message);
+      return;
+    }
+
+    alert("Ka shiga asusunka cikin nasara!");
+  } catch (error) {
+    alert("An samu matsala wajen haɗawa da Supabase.");
+  }
+});
+</script>").addEventListener("submit", function(event) {
       event.preventDefault();
 
       alert(
@@ -370,9 +419,8 @@
         + "domin login na gaske."
       );
     });
-  </script>
+  </https://iyymtbwevsdtqvtwtdre.supabase.co>
 
 </body>
 </html>
-https://iyymtbwevsdtqvtwtdre.supabase.co/rest/v1/
-sb_publishable_d8qc9vjKhtzuv8dEFKr_AQ_X5ulP6tl
+
