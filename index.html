@@ -1,248 +1,376 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ha">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ameer Data Hub</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ABBA DATA HUB</title>
 
-<style>
-* {
-  box-sizing: border-box;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
 
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f3f6fb;
-  color: #172033;
-}
+    body {
+      background: #f2f8f3;
+      color: #183b27;
+    }
 
-header {
-  background: #075e43;
-  color: white;
-  padding: 25px 20px;
-  border-radius: 0 0 25px 25px;
-}
+    header {
+      background: #087b3b;
+      color: white;
+      padding: 22px 15px;
+      text-align: center;
+    }
 
-header h1 {
-  margin: 0;
-  font-size: 25px;
-}
+    header h1 {
+      font-size: 27px;
+      margin-bottom: 8px;
+    }
 
-header p {
-  margin-bottom: 0;
-  color: #d8f5e8;
-}
+    header p {
+      font-size: 14px;
+    }
 
-.balance {
-  background: white;
-  margin: 20px;
-  padding: 20px;
-  border-radius: 16px;
-  box-shadow: 0 3px 12px #0000000d;
-}
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 13px;
+      background: white;
+      box-shadow: 0 2px 6px #ddd;
+    }
 
-.balance h2 {
-  color: #075e43;
-  margin: 8px 0;
-}
+    nav a {
+      color: #087b3b;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+    }
 
-.container {
-  padding: 0 20px 30px;
-}
+    .hero {
+      margin: 20px auto;
+      padding: 25px 18px;
+      max-width: 600px;
+      background: linear-gradient(135deg, #087b3b, #13a653);
+      color: white;
+      border-radius: 15px;
+      width: 92%;
+      text-align: center;
+    }
 
-h3 {
-  margin-top: 25px;
-}
+    .hero h2 {
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
 
-.networks {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
+    .hero p {
+      line-height: 1.6;
+    }
 
-.network {
-  background: white;
-  padding: 20px 10px;
-  border-radius: 15px;
-  text-align: center;
-  border: 2px solid transparent;
-  cursor: pointer;
-  font-size: 17px;
-  font-weight: bold;
-}
+    .container {
+      max-width: 600px;
+      margin: auto;
+      padding: 15px;
+    }
 
-.network.selected {
-  border-color: #078354;
-  background: #e5f8ef;
-}
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 13px;
+      margin-bottom: 18px;
+      box-shadow: 0 3px 12px #dce8df;
+    }
 
-.network span {
-  display: block;
-  margin-bottom: 8px;
-  font-size: 25px;
-}
+    h2, h3 {
+      margin-bottom: 15px;
+    }
 
-form {
-  background: white;
-  padding: 18px;
-  border-radius: 16px;
-  margin-top: 20px;
-}
+    label {
+      display: block;
+      margin: 12px 0 6px;
+      font-weight: bold;
+      font-size: 14px;
+    }
 
-label {
-  display: block;
-  margin: 15px 0 7px;
-  font-weight: bold;
-}
+    input, select {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #cbd9ce;
+      border-radius: 8px;
+      background: white;
+      font-size: 15px;
+    }
 
-input, select, button {
-  width: 100%;
-  padding: 13px;
-  border-radius: 9px;
-  font-size: 16px;
-}
+    button, .button {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 8px;
+      background: #087b3b;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+    }
 
-input, select {
-  border: 1px solid #ccd4df;
-  background: white;
-}
+    button:hover, .button:hover {
+      background: #065c2c;
+    }
 
-button {
-  background: #078354;
-  color: white;
-  border: none;
-  font-weight: bold;
-  margin-top: 18px;
-  cursor: pointer;
-}
+    .networks {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
 
-.notice {
-  margin-top: 15px;
-  padding: 12px;
-  background: #fff5d9;
-  border-radius: 10px;
-  font-size: 13px;
-  line-height: 1.5;
-}
+    .network {
+      padding: 17px 8px;
+      background: #e7f5eb;
+      border: 1px solid #b7dfc3;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: bold;
+      color: #087b3b;
+    }
 
-footer {
-  text-align: center;
-  padding: 20px;
-  color: #687386;
-  font-size: 13px;
-}
-</style>
+    .balance {
+      background: #087b3b;
+      color: white;
+      text-align: center;
+      padding: 22px;
+      border-radius: 12px;
+      margin-bottom: 15px;
+    }
+
+    .balance h2 {
+      font-size: 30px;
+      margin-top: 8px;
+      margin-bottom: 0;
+    }
+
+    .notice {
+      background: #fff6d9;
+      color: #725700;
+      padding: 13px;
+      border-radius: 8px;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    footer {
+      background: #07572c;
+      color: white;
+      text-align: center;
+      padding: 22px 10px;
+      margin-top: 25px;
+      line-height: 1.8;
+    }
+
+    .small {
+      color: #637569;
+      font-size: 12px;
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-  <h1>✚ AMEER DATA HUB</h1>
-  <p>Your trusted data shopping platform</p>
-</header>
+  <header>
+    <h1>🌿 ABBA DATA HUB</h1>
+    <p>Sayen Data cikin sauƙi da sauri!</p>
+  </header>
 
-<section class="balance">
-  <p>My Wallet</p>
-  <h2>₦0.00</h2>
-  <small>Demo wallet balance</small>
-</section>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#buydata">Buy Data</a>
+    <a href="#wallet">Wallet</a>
+    <a href="#login">Login</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-<main class="container">
+  <section class="hero" id="home">
+    <h2>Welcome to ABBA DATA HUB</h2>
+    <p>
+      Dandalin sayen data na MTN, Airtel, Glo da 9mobile.
+      Za ka iya duba tsarin sayen data a nan.
+    </p>
+  </section>
 
-  <h3>📱 Select Network</h3>
+  <main class="container">
 
-  <div class="networks">
-    <button type="button" class="network selected"
-      data-network="MTN">
-      <span>🟡</span>MTN
-    </button>
+    <section class="card">
+      <h2>📡 Networks</h2>
 
-    <button type="button" class="network"
-      data-network="Airtel">
-      <span>🔴</span>Airtel
-    </button>
+      <div class="networks">
+        <div class="network">🟡 MTN</div>
+        <div class="network">🔴 Airtel</div>
+        <div class="network">🟢 Glo</div>
+        <div class="network">🔵 9mobile</div>
+      </div>
+    </section>
 
-    <button type="button" class="network"
-      data-network="Glo">
-      <span>🟢</span>Glo
-    </button>
+    <section class="card" id="buydata">
+      <h2>🛒 Buy Data</h2>
 
-    <button type="button" class="network"
-      data-network="9mobile">
-      <span>🟢</span>9mobile
-    </button>
-  </div>
+      <form id="dataForm">
+        <label for="network">Zaɓi Network</label>
+        <select id="network" required>
+          <option value="">-- Zaɓi Network --</option>
+          <option value="MTN">MTN</option>
+          <option value="Airtel">Airtel</option>
+          <option value="Glo">Glo</option>
+          <option value="9mobile">9mobile</option>
+        </select>
 
-  <form id="dataForm">
-    <h3>Buy Data Bundle</h3>
+        <label for="plan">Zaɓi Data Plan</label>
+        <select id="plan" required>
+          <option value="">-- Zaɓi Data --</option>
+          <option value="500MB">500MB - ₦150 (misali)</option>
+          <option value="1GB">1GB - ₦300 (misali)</option>
+          <option value="2GB">2GB - ₦600 (misali)</option>
+          <option value="5GB">5GB - ₦1,500 (misali)</option>
+        </select>
 
-    <label for="phone">Phone Number</label>
-    <input
-      type="tel"
-      id="phone"
-      placeholder="Enter phone number"
-      maxlength="11"
-      required
-    >
+        <label for="phone">Lambar Wayar da Za a Turawa Data</label>
+        <input
+          id="phone"
+          type="tel"
+          placeholder="Misali: 08012345678"
+          pattern="[0-9]{11}"
+          maxlength="11"
+          required
+        >
 
-    <label for="bundle">Select Data Bundle</label>
-    <select id="bundle" required>
-      <option value="">Choose data size</option>
-      <option value="500MB">500 MB</option>
-      <option value="1GB">1 GB</option>
-      <option value="2GB">2 GB</option>
-      <option value="5GB">5 GB</option>
-      <option value="10GB">10 GB</option>
-    </select>
+        <button type="submit">Ci Gaba</button>
+      </form>
 
-    <button type="submit">Continue</button>
+      <p class="small">
+        Farashin da aka nuna misalai ne kawai; ba a tabbatar da su a matsayin
+        farashin saye na gaske ba.
+      </p>
+    </section>
 
-    <div id="message" class="notice">
-      Demo only: no real data purchase or payment is processed.
-    </div>
-  </form>
+    <section class="card" id="wallet">
+      <h2>👛 My Wallet</h2>
 
-</main>
+      <div class="balance">
+        <p>Wallet Balance (Demo)</p>
+        <h2>₦0.00</h2>
+      </div>
 
-<footer>
-  © 2026 Ameer Data Hub. All rights reserved.
-</footer>
+      <button type="button" onclick="demoMessage()">
+        Fund Wallet
+      </button>
 
-<script>
-let selectedNetwork = "MTN";
+      <p class="small">
+        Wallet ɗin nan na demo ne. Ba ya karɓar kuɗi na gaske.
+      </p>
+    </section>
 
-document.querySelectorAll(".network").forEach(button => {
-  button.addEventListener("click", () => {
-    document.querySelectorAll(".network").forEach(item => {
-      item.classList.remove("selected");
+    <section class="card" id="login">
+      <h2>🔐 Login / Register</h2>
+
+      <form id="loginForm">
+        <label for="email">Email Address</label>
+        <input
+          id="email"
+          type="email"
+          placeholder="Shigar da email"
+          required
+        >
+
+        <label for="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          placeholder="Shigar da password"
+          minlength="6"
+          required
+        >
+
+        <button type="submit">Login</button>
+      </form>
+
+      <p class="small">
+        Wannan login na nuna demo ne kawai. Ba ya ƙirƙirar account
+        mai tsaro ko adana bayananka a server.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>💳 Payment Methods</h2>
+      <p>Za a iya haɗa waɗannan hanyoyin idan an kafa tsarin biyan kuɗi:</p>
+      <p style="margin-top:12px; line-height:2;">
+        🏦 Bank Transfer<br>
+        💳 ATM / Debit Card<br>
+        👛 Wallet
+      </p>
+
+      <div class="notice" style="margin-top:12px;">
+        Ba a haɗa biyan kuɗi na gaske ba tukuna. Kada ka shigar da bayanan
+        katin bankinka a wannan demo.
+      </div>
+    </section>
+
+    <section class="card" id="contact">
+      <h2>📞 Contact Us</h2>
+      <p>ABBA DATA HUB</p>
+      <p style="margin-top:8px;">
+        Muna gina tsarin sayen data mai sauƙin amfani.
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    <h3>ABBA DATA HUB</h3>
+    <p>Easy • Fast • Reliable</p>
+    <p>© 2026 ABBA DATA HUB</p>
+  </footer>
+
+  <script>
+    function demoMessage() {
+      alert(
+        "Wannan demo ne. Ba a haɗa biyan kuɗi na gaske ba tukuna."
+      );
+    }
+
+    document.getElementById("dataForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const network = document.getElementById("network").value;
+      const plan = document.getElementById("plan").value;
+      const phone = document.getElementById("phone").value;
+
+      alert(
+        "ABBA DATA HUB - Demo\n\n" +
+        "Network: " + network + "\n" +
+        "Data: " + plan + "\n" +
+        "Phone: " + phone + "\n\n" +
+        "Ba a tura data ba tukuna. Ana buƙatar haɗa tsarin VTU na gaske."
+      );
     });
 
-    button.classList.add("selected");
-    selectedNetwork = button.dataset.network;
-  });
-});
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+      event.preventDefault();
 
-document.getElementById("dataForm").addEventListener("submit", event => {
-  event.preventDefault();
-
-  const phone = document.getElementById("phone").value.trim();
-  const bundle = document.getElementById("bundle").value;
-  const message = document.getElementById("message");
-
-  if (!/^0[0-9]{10}$/.test(phone)) {
-    message.textContent =
-      "Please enter a valid 11-digit Nigerian phone number.";
-    return;
-  }
-
-  message.textContent =
-    "Demo order: " + selectedNetwork + " | " +
-    bundle + " | " + phone +
-    ". No payment has been made and no data has been sent.";
-});
-</script>
+      alert(
+        "Wannan login demo ne kawai. Ana buƙatar backend mai tsaro "
+        + "domin login na gaske."
+      );
+    });
+  </script>
 
 </body>
 </html>
